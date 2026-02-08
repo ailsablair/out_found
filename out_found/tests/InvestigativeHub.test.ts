@@ -2,14 +2,15 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { InvestigativeHub } from '../src/core/InvestigativeHub.js';
 import { NamUsIntegration } from '../src/services/osint/NamUsIntegration.js';
+import { WaybackIntegration } from '../src/services/osint/WaybackIntegration.js';
 import { CaseStatus } from '../src/models/types.js';
 
 describe('InvestigativeHub Resilience', () => {
   it('should continue processing even if NamUs integration fails', async () => {
     const hub = new InvestigativeHub();
 
-    // Mock NamUs to fail
     const namUsStub = sinon.stub(NamUsIntegration.prototype, 'findCase').resolves(null);
+    const waybackStub = sinon.stub(WaybackIntegration.prototype, 'checkAvailability').resolves(null);
 
     const mockCase = {
       id: 'test-123',
@@ -26,9 +27,9 @@ describe('InvestigativeHub Resilience', () => {
 
     expect(result.caseId).to.equal('test-123');
     expect(result.sources.namUs).to.equal('Not Found');
-    // Ensure the overall process didn't crash
     expect(result.anchorPoint).to.have.property('lat');
 
     namUsStub.restore();
+    waybackStub.restore();
   });
 });
