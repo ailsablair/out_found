@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import forensicRoutes from './gateway/routes/ForensicRoutes.js';
 import { InvestigativeHub } from './core/InvestigativeHub.js';
-import { FOIAGenerator } from './services/legal/FOIAGenerator.js';
+import { FOIAGenerator } from './modules/legal/FOIAGenerator.js';
 
 dotenv.config();
 
@@ -12,8 +13,11 @@ const foia = new FOIAGenerator();
 
 app.use(express.json());
 
+// Gateway Routing
+app.use('/api/forensic', forensicRoutes);
+
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', name: 'Out&Found Investigative Hub' });
+  res.json({ status: 'ok', name: 'Out&Found API Gateway' });
 });
 
 app.post('/api/cases', async (req, res) => {
@@ -46,5 +50,5 @@ app.post('/api/legal/foia', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Out&Found API listening on port ${port}`);
+  console.log(`Out&Found Gateway listening on port ${port}`);
 });

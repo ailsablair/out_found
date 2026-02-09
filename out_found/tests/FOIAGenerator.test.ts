@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { FOIAGenerator } from '../src/services/legal/FOIAGenerator.js';
+import { FOIAGenerator } from '../src/modules/legal/FOIAGenerator.js';
 
 describe('FOIAGenerator', () => {
   const gen = new FOIAGenerator();

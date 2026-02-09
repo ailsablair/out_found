@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { InvestigativeHub } from '../src/core/InvestigativeHub.js';
-import { NamUsIntegration } from '../src/services/osint/NamUsIntegration.js';
-import { WaybackIntegration } from '../src/services/osint/WaybackIntegration.js';
+import { NamUsIntegration } from '../src/modules/osint/NamUsIntegration.js';
+import { WaybackIntegration } from '../src/modules/osint/WaybackIntegration.js';
 import { CaseStatus } from '../src/models/types.js';
 
 describe('InvestigativeHub Resilience', () => {

@@ -1,11 +1,11 @@
 import { type Case, type Coords, CaseStatus } from '../models/types.js';
-import { NamUsIntegration } from '../services/osint/NamUsIntegration.js';
-import { WaybackIntegration } from '../services/osint/WaybackIntegration.js';
-import { RossmoService } from '../services/forensic/RossmoService.js';
-import { LawEnforcementService } from '../services/legal/LawEnforcementService.js';
-import { TakedownIntegration } from '../services/legal/TakedownIntegration.js';
-import { SignatureLinker, type CaseSignature } from '../services/forensic/SignatureLinker.js';
-import { SpatialSearchService } from '../services/forensic/SpatialSearchService.js';
+import { NamUsIntegration } from '../modules/osint/NamUsIntegration.js';
+import { WaybackIntegration } from '../modules/osint/WaybackIntegration.js';
+import { RossmoService } from '../modules/forensic/RossmoService.js';
+import { LawEnforcementService } from '../modules/legal/LawEnforcementService.js';
+import { TakedownIntegration } from '../modules/legal/TakedownIntegration.js';
+import { SignatureLinker, type CaseSignature } from '../modules/forensic/SignatureLinker.js';
+import { SpatialSearchService } from '../modules/forensic/SpatialSearchService.js';
 
 export class InvestigativeHub {
   private namUs = new NamUsIntegration();

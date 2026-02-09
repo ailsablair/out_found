@@ -8,7 +8,7 @@ export abstract class BaseIntegration {
     this.serviceName = serviceName;
     this.client = axios.create({
       baseURL,
-      timeout: 5000, // Strict timeout for resilience
+      timeout: 5000,
     });
   }
 
@@ -18,7 +18,7 @@ export abstract class BaseIntegration {
       return response.data;
     } catch (error: any) {
       console.warn(`[${this.serviceName}] Integration call failed: ${error.message}`);
-      return null; // Return null on failure instead of throwing
+      return null;
     }
   }
 }
