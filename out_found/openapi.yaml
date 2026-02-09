@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: Out&Found Investigative Hub API
+  version: 1.0.0
+  description: API for the Out&Found platform, supporting missing persons investigations for the 2SLGBTQIA+ community.
+paths:
+  /api/cases:
+    post:
+      summary: Submit a new case
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caseData:
+                  type: object
+                signatures:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Case processed successfully
+  /api/forensic/age-progression:
+    post:
+      summary: Request age progression for a case
+      responses:
+        '200':
+          description: Age progression queued
+  /api/legal/foia:
+    post:
+      summary: Generate FOIA request template
+      responses:
+        '200':
+          description: Template generated

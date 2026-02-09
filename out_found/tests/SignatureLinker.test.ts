@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { SignatureLinker } from '../src/services/forensic/SignatureLinker.js';
+import { SignatureLinker } from '../src/modules/forensic/SignatureLinker.js';
 
 describe('SignatureLinker', () => {
   const linker = new SignatureLinker();
